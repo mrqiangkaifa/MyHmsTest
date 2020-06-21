@@ -74,6 +74,19 @@
             android:textSize="16sp" />
         <Button
 
+            android:id="@+id/button_p_to_text"
+            android:layout_width="310dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@color/black"
+            android:onClick="loadTextRecognitionPicBtnClick"
+            android:text="@string/translate_v_p"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+        <Button
+
             android:id="@+id/button_scan1"
             android:layout_width="310dp"
             android:layout_height="36dp"

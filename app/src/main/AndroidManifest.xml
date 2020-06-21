@@ -51,6 +51,12 @@
             android:name=".RemoteDetectionActivity"
             android:theme="@style/Theme.AppCompat"
             android:exported="true" />
+        <activity android:name=".camera.camera.MainTransferActivity"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".camera.camera.RemoteTranslateActivity"
+        android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".camera.camera.CapturePhotoActivity"
+            android:theme="@style/Theme.AppCompat"/>
     </application>
 
 </manifest>

@@ -50,5 +50,19 @@ public class Constant {
 
     public static final String DEFAULT_VERSION = "1.0.3.300";
     public static final boolean IS_CHINESE = false;
+    /**
+     * source_language.
+     */
+    public static final String SOURCE_VALUE = "source_language";
+
+    /**
+     * dest_language.
+     */
+    public static final String DEST_VALUE = "dest_language";
+
+    /**
+     * image.
+     */
+    public static final String IMAGE_PATH_VALUE = "imagePath";
 
 }
