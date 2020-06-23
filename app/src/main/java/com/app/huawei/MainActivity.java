@@ -84,7 +84,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         startActivity(new Intent(MainActivity.this, TextRecognitionActivity.class));
     }
     public void loadTextRecognitionPicBtnClick(View view){
-        // Text recognition
+        //todo 图片识别翻译入口
         startActivity(new Intent(MainActivity.this, MainTransferActivity.class));
     }
     /**

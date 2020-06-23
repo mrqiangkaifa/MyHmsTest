@@ -127,6 +127,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
                         && RemoteTranslateActivity.this.path == null) {
                     Toast.makeText(RemoteTranslateActivity.this.getApplicationContext(), R.string.please_select_picture, Toast.LENGTH_SHORT).show();
                 } else {
+                    //todo 点击翻译按钮进行翻译
                     RemoteTranslateActivity.this.createRemoteTextAnalyzer();
                     Toast.makeText(RemoteTranslateActivity.this.getApplicationContext(), R.string.translate_start, Toast.LENGTH_SHORT).show();
                 }
@@ -154,6 +155,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //todo 得到识别和翻译结果进行展示
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == this.REQUEST_CHOOSE_ORIGINPIC)
                 && (resultCode == Activity.RESULT_OK)) {
@@ -210,6 +212,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String text) {
                 if (text != null) {
+                    //todo 翻译成功
                     RemoteTranslateActivity.this.remoteDisplaySuccess(text);
                 } else {
                     RemoteTranslateActivity.this.displayFailure();
@@ -224,6 +227,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
     }
 
     private void createRemoteTextAnalyzer() {
+        //todo 这个方法是真正进行识别和翻译工作的
         MLRemoteTextSetting setting = (new MLRemoteTextSetting.Factory()).
                 setTextDensityScene(MLRemoteTextSetting.OCR_LOOSE_SCENE).create();
         this.textAnalyzer = MLAnalyzerFactory.getInstance().getRemoteTextAnalyzer(setting);
@@ -233,6 +237,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             task.addOnSuccessListener(new OnSuccessListener<MLText>() {
                 @Override
                 public void onSuccess(MLText mlText) {
+                    //todo 翻译识别翻译成功
                     // Transacting logic for segment success.
                     if (mlText != null) {
                         RemoteTranslateActivity.this.remoteDetectSuccess(mlText);
@@ -276,6 +281,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
         for (int i = 0; i < lines.size(); i++) {
             this.sourceText = this.sourceText + lines.get(i).getStringValue().trim() + "\n";
         }
+        //todo 得到识别的结果进行翻译
         this.createRemoteTranslator();
     }
 

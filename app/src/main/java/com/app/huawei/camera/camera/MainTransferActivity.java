@@ -261,6 +261,7 @@ public class MainTransferActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void translatePhoto() {
+        //todo 打开翻译页面
         Intent intent = new Intent(MainTransferActivity.this, RemoteTranslateActivity.class);
         intent.putExtra(Constant.SOURCE_VALUE, this.srcLanguage);
         intent.putExtra(Constant.DEST_VALUE, this.dstLanguage);
@@ -277,10 +278,13 @@ public class MainTransferActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
+        //todo 点击选择图片或者是翻译图片接口
         switch (v.getId()) {
+            //todo 点击选择图片
             case R.id.buttonSwitchLang:
                 MainTransferActivity.this.doLanguageSwitch();
                 break;
+            //todo 点击翻译图片接口
             case R.id.select_photo:
                 MainTransferActivity.this.translatePhoto();
                 break;
