@@ -265,7 +265,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             return;
         }
     }
-
+    //todo 图片识别结果
     private void remoteDetectSuccess(MLText mlTexts) {
         this.sourceText = "";
         List<MLText.Block> blocks = mlTexts.getBlocks();
