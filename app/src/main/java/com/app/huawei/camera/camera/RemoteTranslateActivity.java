@@ -99,7 +99,9 @@ public class RemoteTranslateActivity extends AppCompatActivity {
         });
         this.isLandScape =
                 (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE);
+        //todo 这里是初始化页面
         this.initView();
+        //todo 按钮的触发动作
         this.initAction();
     }
 
@@ -112,6 +114,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
     }
 
     private void initAction() {
+        //todo 点击加载图片
         this.relativeLayoutLoadPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +122,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             }
         });
 
-        // Outline the edge.
+        //todo 点击翻译按钮进行翻译
         this.relativeLayoutTranslate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +130,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
                         && RemoteTranslateActivity.this.path == null) {
                     Toast.makeText(RemoteTranslateActivity.this.getApplicationContext(), R.string.please_select_picture, Toast.LENGTH_SHORT).show();
                 } else {
-                    //todo 点击翻译按钮进行翻译
+
                     RemoteTranslateActivity.this.createRemoteTextAnalyzer();
                     Toast.makeText(RemoteTranslateActivity.this.getApplicationContext(), R.string.translate_start, Toast.LENGTH_SHORT).show();
                 }
@@ -141,12 +144,12 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             }
         });
     }
-
+    //todo 拍照片
     private void takePhoto(int requestCode) {
         Intent intent = new Intent(RemoteTranslateActivity.this, CapturePhotoActivity.class);
         this.startActivityForResult(intent, requestCode);
     }
-
+    //todo 选择本地照片
     private void selectLocalImage(int requestCode) {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
@@ -155,21 +158,25 @@ public class RemoteTranslateActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //todo 得到识别和翻译结果进行展示
+
         super.onActivityResult(requestCode, resultCode, data);
+        //todo 获取选择的图片
         if ((requestCode == this.REQUEST_CHOOSE_ORIGINPIC)
                 && (resultCode == Activity.RESULT_OK)) {
             // In this case, imageUri is returned by the chooser, save it.
             this.imageUri = data.getData();
             this.loadOriginImage();
-        } else if ((requestCode == this.REQUEST_TAKE_PHOTO)
+
+        }
+        //todo 获取相机拍照的图片
+        else if ((requestCode == this.REQUEST_TAKE_PHOTO)
                 && (resultCode == Activity.RESULT_OK)
                 && data != null) {
             this.path = data.getStringExtra(Constant.IMAGE_PATH_VALUE);
             this.loadCameraImage();
         }
     }
-
+    //todo 获取相机拍照的图片
     private void loadCameraImage() {
         if (this.path == null) {
             return;
@@ -284,7 +291,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
         //todo 得到识别的结果进行翻译
         this.createRemoteTranslator();
     }
-
+    //todo 翻译成功展示结果
     private void remoteDisplaySuccess(String test) {
         String[] sourceLines = sourceText.split("\n");
         String[] drtLines = test.split("\n");
@@ -293,7 +300,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
         }
         Toast.makeText(RemoteTranslateActivity.this.getApplicationContext(), R.string.translate_success, Toast.LENGTH_SHORT).show();
     }
-
+    //todo 翻译失败
     private void displayFailure() {
         Toast.makeText(this.getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
     }
@@ -305,7 +312,7 @@ public class RemoteTranslateActivity extends AppCompatActivity {
             return true;
         }
     }
-
+    //todo 获取选择的图片
     private void loadOriginImage() {
         if (this.imageUri == null) {
             return;
